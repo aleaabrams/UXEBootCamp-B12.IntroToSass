@@ -1,0 +1,199 @@
+$background-color: #feefe2;
+$header-color: #f97e73;
+$text-color: #c60098;
+$primary-font: "lato";
+$secondary-text-color: white;
+$calendar-color: #50003e;
+
+$button-color: #930071 !default;
+$button-border-color: #c60098;
+$button-text-color: $secondary-text-color;
+$button-border-style: .2em solid $button-border-color !default;
+$button-padding: .5em 1.6em;
+
+$nav-font-size: 1.5em;
+
+body{
+  background-color: $background-color;
+}
+header {
+  background-color:$header-color;
+  width:100%;
+  top:0;
+  height:6em;
+  position:relative;
+  text-align:center;
+  h1{
+  margin-top:0;
+  padding-top:0.2em;
+  padding-left:0.2em;
+  color:$secondary-text-color;
+  font: {
+    size:4em;
+    weight:300;
+  }
+  display:inline-block;
+  width:260px;
+}
+}
+
+
+nav {
+  display:inline-block;
+  text-align:center;
+  bottom:0;
+  width:680px;
+  a{
+  font: {
+    family: $primary-font, sans-serif;
+    weight:300;
+    size: $nav-font-size;
+  }
+  color:$secondary-text-color;
+  width:24%;
+  display:inline-block;
+  text-decoration:none;
+  line-height:170%;
+  margin-bottom:3px;
+}
+}
+
+h1, h2, h3, p, small {
+  font-family:$primary-font, sans-serif;
+}
+
+.logout {
+  font: {
+    family:$primary-font, sans-serif;
+    weight: 300;
+    size: $nav-font-size;
+  };
+  text-decoration:none;
+  width:24%;
+  &.top{
+    display:inline-block;
+    line-height:170%;
+    margin-bottom:3px;
+  }
+  &.bottom{
+    color:$secondary-text-color;
+    position:absolute;
+    bottom:0.5em;
+    right:1em;
+  }
+}
+
+main {
+  width:100%;
+  text-align: center;
+  top: 6em;
+  bottom: 3em;
+  overflow: auto;
+  position: absolute;
+  h1{
+    color:$text-color;
+    font-size:3em;
+    font-weight:300;
+  }
+  h2, p{
+    color: $text-color;
+    font-weight:300;
+  }
+}
+
+footer {
+  background-color:$header-color;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  height:3em;
+  text-align:center;
+}
+
+@mixin button ($color: $button-color, $border-style: $button-border-style, $text-color: $button-text-color, $padding: $button-padding) {
+  background-color: $color;
+  border: $border-style;
+  color: $text-color;
+  padding: $padding;
+}
+
+input {
+  @include button (transparent, none none .1em none, $text-color, none);
+  font-family: $primary-font, sans-serif;
+  font-size: .8em;
+  outline:none;
+  #add{
+    @include button;
+    margin-top: 0.5em;
+  }
+    &#add:hover{
+      background-color: $button-border-color;
+      cursor: pointer;
+    }
+  #submit {
+    @include button;
+    margin-top: 1em;
+    display: block;
+    margin: 1em auto;
+  }
+  #enter{
+    @include button;
+    display: block;
+    margin: 1em auto;
+    margin-top: 1em;
+    color: $secondary-text-color;
+  }
+}
+
+.edit {
+  display: block;
+  margin: .6em auto;
+  padding: .4em .8em;
+  width: 15em;
+}
+
+form {
+  text-align: center;
+}
+
+.move-p {
+  margin-top: -1.2em;
+  margin-bottom: 1.5em;
+}
+
+#countdown {
+  font: {
+    family: $primary-font, sans-serif;
+    size: $nav-font-size * 2;
+  };
+  color: $calendar-color;
+  width:8em;
+  height:1em;
+  margin:0 auto;
+}
+
+.item {
+  font: {
+    family: $primary-font, sans-serif;
+    size: $nav-font-size;
+  };
+  color: $calendar-color;
+}
+
+%ico-font-base {
+    font-family: 'ico-fonts';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+$icons: (icon-twitter2 '/e607') (icon-dribbble '/e602') (icon-facebook '/e606') (icon-github '/e608');
+
+@each $icon in $icons {
+  .#{nth($icon, 1)}:after {
+    content: nth($icon, 2);
+    @extend %ico-font-base;
+  }
+}
